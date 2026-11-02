@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boxwise: learn the CSS box model</title>
+<style>
+*,*::before,*::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+
+:root {
+  --teal: #0f766e;
+  --teal-dark: #115e59;
+  --teal-light: #ccfbf1;
+  --ink: #1f2937;
+  --orange: #c2410c;
+  --orange-light: #ffedd5;
+  --z-header: 100;
+}
+
+body {
+  margin: 0;
+  background: #f4f4f0;
+  color: var(--ink);
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+/* Shared */
+.section { padding: 56px 24px; }
+.section__title { margin: 0 0 24px; font-size: 1.6rem; text-align: center; }
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 2px solid var(--teal);
+  border-radius: 999px;
+  background: var(--teal);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+.button:hover { background: var(--teal-dark); }
+.button--ghost { background: #fff; color: var(--teal); }
+.button--ghost:hover { background: var(--teal); color: #fff; }
+.button:focus-visible,
+.navbar a:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+
+/* Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 24px;
+  background: var(--ink);
+  border-bottom: 3px solid var(--teal);
+}
+.navbar__logo { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+.navbar__menu { display: flex; align-items: center; gap: 24px; }
+.navbar__links { display: flex; gap: 20px; margin: 0; padding: 0; list-style: none; }
+.navbar__link {
+  padding: 6px 2px;
+  color: #d1d5db;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+.navbar__link:hover { color: #fff; border-bottom-color: #14b8a6; }
+
+/* Hero banner */
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  min-height: 460px;
+  padding: 48px 24px;
+  background: var(--teal-light);
+  border-bottom: 3px solid var(--teal);
+  text-align: center;
+}
+.hero__title {
+  max-width: 18ch;
+  margin: 0;
+  font-size: clamp(2rem, 6vw, 3.4rem);
+  line-height: 1.1;
+  color: var(--teal);
+}
+.hero__text { max-width: 50ch; margin: 0; font-size: 1.1rem; }
+.hero__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 8px; }
+
+/* Rows of cards */
+.card-row { display: flex; flex-wrap: wrap; gap: 16px; max-width: 1000px; margin: 0 auto; }
+.card {
+  --accent: var(--teal);
+  --tint: #fff;
+  flex: 1 1 200px;
+  padding: 20px;
+  border: 3px solid var(--accent);
+  border-radius: 16px;
+  background: var(--tint);
+  text-align: center;
+}
+.card--orange { --accent: var(--orange); --tint: var(--orange-light); }
+.card--teal { --tint: var(--teal-light); }
+.card__avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 12px;
+  border: 4px solid var(--accent);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--accent);
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+.card__title { margin: 0 0 6px; font-size: 1.05rem; color: var(--accent); }
+.card__text { margin: 0; font-size: .92rem; }
+
+/* Call to action + footer */
+.cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background: var(--ink);
+  color: #fff;
+  text-align: center;
+}
+.cta__title { margin: 0; font-size: 1.6rem; }
+.cta__text { margin: 0 0 8px; color: #d1d5db; }
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 16px 24px;
+  background: #111827;
+  color: #9ca3af;
+  font-size: .85rem;
+}
+
+@media (max-width: 600px) { .navbar__links { display: none; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <a class="navbar__logo" href="#top">Boxwise</a>
+  <nav class="navbar__menu" aria-label="Main">
+    <ul class="navbar__links">
+      <li><a class="navbar__link" href="#features">Features</a></li>
+      <li><a class="navbar__link" href="#team">Team</a></li>
+      <li><a class="navbar__link" href="#join">Contact</a></li>
+    </ul>
+    <a class="button" href="#join">Sign up</a>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <h1 class="hero__title">See every pixel of the box model</h1>
+  <p class="hero__text">Padding, border and margin, explained with live examples you can drag, resize and break on purpose.</p>
+  <div class="hero__actions">
+    <a class="button" href="#join">Start free</a>
+    <a class="button button--ghost" href="#features">See how it works</a>
+  </div>
+</section>
+
+<section class="section" id="features">
+  <h2 class="section__title">What you get</h2>
+  <div class="card-row">
+    <article class="card card--teal">
+      <h3 class="card__title">Live diagram</h3>
+      <p class="card__text">Change a value and watch margin, border and padding move.</p>
+    </article>
+    <article class="card card--orange">
+      <h3 class="card__title">border-box vs content-box</h3>
+      <p class="card__text">Switch between both and see why widths change.</p>
+    </article>
+    <article class="card card--teal">
+      <h3 class="card__title">Copy-ready CSS</h3>
+      <p class="card__text">Every experiment gives you clean code to paste.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="team">
+  <h2 class="section__title">Who makes it</h2>
+  <div class="card-row">
+    <article class="card card--teal">
+      <div class="card__avatar" aria-hidden="true">AS</div>
+      <h3 class="card__title">Aarav Sharma</h3>
+      <p class="card__text">Frontend developer</p>
+    </article>
+    <article class="card card--orange">
+      <div class="card__avatar" aria-hidden="true">PV</div>
+      <h3 class="card__title">Priya Verma</h3>
+      <p class="card__text">UI designer</p>
+    </article>
+    <article class="card card--teal">
+      <div class="card__avatar" aria-hidden="true">RG</div>
+      <h3 class="card__title">Rohan Gupta</h3>
+      <p class="card__text">Backend developer</p>
+    </article>
+    <article class="card card--orange">
+      <div class="card__avatar" aria-hidden="true">NS</div>
+      <h3 class="card__title">Neha Singh</h3>
+      <p class="card__text">Product manager</p>
+    </article>
+  </div>
+</section>
+
+<section class="section cta" id="join">
+  <h2 class="cta__title">Ready to stop guessing at spacing?</h2>
+  <p class="cta__text">Create a free account and start experimenting.</p>
+  <a class="button" href="#top">Sign up</a>
+</section>
+
+<footer class="footer">
+  <span>© 2026 Boxwise</span>
+  <span>Built with HTML and CSS only</span>
+</footer>
+
+</body>
+</html>
