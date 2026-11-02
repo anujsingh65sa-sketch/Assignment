@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CSS Variables</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Colours */
+      --primary: #2563eb;
+      --secondary: #7c3aed;
+      --background: #f0f4ff;
+      --text: #333333;
+      --white: #ffffff;
+
+      /* Spacing */
+      --space-sm: 8px;
+      --space-md: 16px;
+      --space-lg: 24px;
+      --space-xl: 32px;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--background);
+      color: var(--text);
+      padding: var(--space-lg);
+    }
+
+    h1 {
+      color: var(--primary);
+      margin-bottom: var(--space-md);
+    }
+
+    .card {
+      background: var(--white);
+      padding: var(--space-lg);
+      margin-bottom: var(--space-xl);
+      border-radius: var(--space-sm);
+    }
+
+    button {
+      background: var(--secondary);
+      color: var(--white);
+      padding: var(--space-sm) var(--space-lg);
+      border: none;
+      border-radius: var(--space-sm);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <h1>CSS Variables</h1>
+    <p>Colours and spacing are managed using :root.</p>
+    <button>Learn More</button>
+  </div>
+</body>
+</html>
