@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Profile cards</title>
+<style>
+*,*::before,*::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  background: #f4f4f0;
+  font-family: system-ui, sans-serif;
+}
+
+/* Card 1: the base card (teal) */
+.card {
+  --accent: #0f766e;
+  --tint: #ccfbf1;
+
+  width: 260px;
+  padding: 20px;
+  margin: 0;
+  border: 3px solid var(--accent);
+  border-radius: 16px;
+  background: var(--tint);
+  text-align: center;
+}
+
+/* Circle avatar: equal width and height, 50% radius */
+.avatar {
+  width: 88px;
+  height: 88px;
+  margin: 0 auto 12px;
+  border: 4px solid var(--accent);
+  border-radius: 50%;
+  background: #fff;
+  object-fit: cover;
+  display: block;
+}
+
+.card h2 {
+  margin: 0 0 4px;
+  font-size: 1.1rem;
+  color: var(--accent);
+}
+
+.card p {
+  margin: 0;
+  font-size: .9rem;
