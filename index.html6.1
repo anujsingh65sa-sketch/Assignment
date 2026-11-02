@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Box model explorer</title>
+<style>
+:root{
+  --bg:#f3f1ec; --ink:#1f2328; --mute:#5b6168; --panel:#fff; --line:#d6d2c8;
+  --content:#8cb6c0;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#1b1d20; --ink:#e8e6e1; --mute:#9aa0a6; --panel:#26292d; --line:#3a3e44;
+    --content:#3f7482;
+  }
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Georgia,serif}
+main{max-width:980px;margin:0 auto;padding:24px 16px 48px}
+h1{font-size:1.8rem;margin:0 0 4px;letter-spacing:-.01em}
+p.sub{margin:0 0 20px;color:var(--mute)}
+.grid{display:grid;grid-template-columns:260px 1fr;gap:20px}
+@media(max-width:720px){.grid{grid-template-columns:1fr}}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px}
+.ctl{margin-bottom:14px;font-family:system-ui,sans-serif;font-size:.85rem}
+.ctl label{display:flex;justify-content:space-between;margin-bottom:2px}
+.ctl
