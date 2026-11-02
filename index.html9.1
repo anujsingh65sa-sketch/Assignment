@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile First Grid Layout</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Mobile first */
+    .container {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "head"
+        "side"
+        "main"
+        "foot";
+      gap: 15px;
+      padding: 15px;
+    }
+
+    .head { grid-area: head; background: steelblue; }
+    .side { grid-area: side; background: orange; }
+    .main { grid-area: main; background: seagreen; }
+    .foot { grid-area: foot; background: gray; }
+
+    .container > * {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 25px;
+      color: white;
+      border-radius: 8px;
+      font-size: 18px;
+    }
+
+    /* Tablet: 768px */
+    @media (min-width: 768px) {
+      .container {
+        grid-template-columns: 200px 1fr;
+        grid-template-areas:
+          "head head"
+          "side main"
+          "foot foot";
+      }
+    }
+
+    /* Desktop: 1024px */
+    @media (min-width: 1024px) {
+      .container {
+        grid-template-columns: 250px 1fr;
+        gap: 20px;
+        padding: 25px;
+      }
+
+      .container > * {
+        padding: 35px;
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <header class="head">
+      <span>🏠</span> Header
+    </header>
+
+    <aside class="side">
+      <span>📁</span> Sidebar
+    </aside>
+
+    <main class="main">
+      <span>📄</span> Main Content
+    </main>
+
+    <footer class="foot">
+      <span>📞</span> Footer
+    </footer>
+  </div>
+
+</body>
+</html>
