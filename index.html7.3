@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Card row</title>
+<style>
+*,*::before,*::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #f4f4f0;
+  font-family: system-ui, sans-serif;
+}
+
+.page-title {
+  margin: 0;
+  padding: 24px 24px 0;
+  font-size: 1.4rem;
+  color: #1f2937;
+}
+
+/* Row of cards */
+.card-row {
+  display: flex;
+  flex-wrap: wrap;          /* cards go to the next line when there is no space */
+  gap: 16px;
+  padding: 24px;
+}
+
+.card {
+  --accent: #0f766e;
+  --tint: #ccfbf1;
+
+  flex: 1 1 200px;          /* grow 1, shrink 1, start at 200px */
+  padding: 20px;
+  border: 3px solid var(--accent);
+  border-radius: 16px;
+  background: var(--tint);
+  text-align: center;
+}
+.card--orange {
+  --accent: #c2410c;
+  --tint: #ffedd5;
+}
+
+.card__avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 12px;
+  border: 4px solid var(--accent);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+.card__name { margin: 0 0 4px; font-size: 1.05rem; color: var(--accent); }
+.card__text { margin: 0; font-size: .9rem;
