@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Skills and Education</title>
+</head>
+<body>
+
+    <h1>My Profile</h1>
+
+    <div id="skills" class="box">
+        <h2>Skills</h2>
+        <p>HTML, CSS, JavaScript and Python</p>
+    </div>
+
+    <div id="education" class="box">
+        <h2>Education</h2>
+        <p>I am a student learning Web Development.</p>
+    </div>
+
+</body>
+</html>
