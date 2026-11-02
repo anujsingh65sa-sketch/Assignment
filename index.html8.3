@@ -1,0 +1,42 @@
+<div class="container">
+  <header class="head">Header</header>
+  <aside class="side">Sidebar</aside>
+  <main class="main">Main Content</main>
+  <footer class="foot">Footer</footer>
+</div>
+
+.container {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-areas:
+    "head head"
+    "side main"
+    "foot foot";
+  gap: 15px;
+}
+
+.head {
+  grid-area: head;
+  background: steelblue;
+}
+
+.side {
+  grid-area: side;
+  background: orange;
+}
+
+.main {
+  grid-area: main;
+  background: lightgreen;
+}
+
+.foot {
+  grid-area: foot;
+  background: gray;
+}
+
+.container > * {
+  padding: 30px;
+  color: white;
+  text-align: center;
+}
