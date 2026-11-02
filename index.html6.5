@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Team cards</title>
+<style>
+*,*::before,*::after { box-sizing: border-box; }
+
+:root {
+  --z-card: 1;
+  --z-header: 100;
+  --z-add-button: 200;
+}
+
+body {
+  margin: 0;
+  background: #f4f4f0;
+  font-family: system-ui, sans-serif;
+}
+
+/* Sticky header */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background: #1f2937;
+  color: #fff;
+  border-bottom: 3px solid #0f766e;
+}
+.site-header__title { margin: 0; font-size: 1.1rem; }
+.site-header__count { font-size: .85rem; opacity: .8; }
+
+/* Card layout */
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 24px;
+}
+
+/* Card (teal by default, orange modifier) */
+.profile-card {
+  --accent: #0f766e;
+  --tint: #ccfbf1;
+
+  position: relative;
+  z-index: var(--z-card);
+  width: 260px;
+  padding: 20px;
+  border: 3px solid var(--accent);
+  border-radius: 16px;
+  background: var(--tint);
+  text-align: center;
+}
+.profile-card--orange {
+  --accent: #c2410c;
+  --tint: #ffedd5;
+}
+
+.profile-card__avatar {
+  display: block;
+  width: 88px;
+  height: 88px;
+  margin: 0 auto 12px;
+  border: 4px solid var(--accent);
+  border-radius: 50%;
+  background: #fff;
+  object-fit: cover;
+}
+.profile-card__name { margin: 0 0 4px; font-size: 1.1rem; color: var(--accent); }
+.profile-card__role { margin: 0 0 12px; font-size: .9rem; color: #333; }
+
+.profile-card__bio {
+  height: 110px;
+  overflow: auto;
+  padding: 10px 12px;
+  border: 2px solid var(--accent);
+  border-radius: 10px;
+  background: #fff;
+  text-align: left;
+  font-size: .85rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Fixed + button */
+.add-button {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: var(--z-add-button);
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: #0f766e;
+  color: #fff;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,.3);
+}
+.add-button:hover { background: #115e59; }
+.add-button:focus-visible { outline: 3px solid #1f2937; outline-offset: 3px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <h1 class="site-header__title">Team cards</h1>
+  <span class="site-header__count">4 members</span>
+</header>
+
+<main class="card-list">
+  <article class="profile-card">
+    <img class="profile-card__avatar" src="https://i.pravatar.cc/176?img=12" alt="Avatar of Aarav Sharma">
+    <h2 class="profile-card__name">Aarav Sharma</h2>
+    <p class="profile-card__role">Frontend developer</p>
+    <div class="profile-card__bio" tabindex="0" aria-label="Aarav's bio">
+      Aarav builds fast, accessible interfaces for the web. He still enjoys getting
+      the small details right: spacing, borders, and how a layout behaves on a small
+      phone screen. Outside work he plays cricket and mentors new coders.
+    </div>
+  </article>
+
+  <article class="profile-card profile-card--orange">
+    <img class="profile-card__avatar" src="https://i.pravatar.cc/176?img=47" alt="Avatar of Priya Verma">
+    <h2 class="profile-card__name">Priya Verma</h2>
+    <p class="profile-card__role">UI designer</p>
+    <div class="profile-card__bio" tabindex="0" aria-label="Priya's bio">
+      Priya designs clear, friendly product interfaces. Her work covers design
+      systems, onboarding flows, and mobile apps. In her free time she sketches
+      and reads about typography.
+    </div>
+  </article>
+
+  <article class="profile-card">
+    <img class="profile-card__avatar" src="https://i.pravatar.cc/176?img=33" alt="Avatar of Rohan Gupta">
+    <h2 class="profile-card__name">Rohan Gupta</h2>
+    <p class="profile-card__role">Backend developer</p>
+    <div class="profile-card__bio" tabindex="0" aria-label="Rohan's bio">
+      Rohan works on APIs and databases. He likes simple systems that are easy to
+      debug, and he writes short docs so the next person understands the code.
+    </div>
+  </article>
+
+  <article class="profile-card profile-card--orange">
+    <img class="profile-card__avatar" src="https://i.pravatar.cc/176?img=32" alt="Avatar of Neha Singh">
+    <h2 class="profile-card__name">Neha Singh</h2>
+    <p class="profile-card__role">Product manager</p>
+    <div class="profile-card__bio" tabindex="0" aria-label="Neha's bio">
+      Neha keeps the team focused on what users need. She talks to customers every
+      week and turns what she hears into clear, small tasks.
+    </div>
+  </article>
+</main>
+
+<button class="add-button" type="button" aria-label="Add new card">+</button>
+
+</body>
+</html>
